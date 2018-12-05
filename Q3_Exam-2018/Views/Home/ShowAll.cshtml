@@ -1,0 +1,27 @@
+﻿@model  IEnumerable<Q3_Exam_2018.Models.Member>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show All Members</title>
+</head>
+<body>
+    @ViewBag.error
+    <h2>The members are: @ViewBag.message</h2>
+    <div>
+        @foreach (var mem in Model)
+        {
+            <h4> Name: @mem.Name </h4>
+            <h4> Address: @mem.Address</h4>
+            <h4>Email: @mem.Email</h4>
+        }
+
+    </div>
+</body>
+</html>

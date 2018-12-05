@@ -1,0 +1,22 @@
+﻿#container {
+    width: 600px;
+    margin: auto;
+    width: 30%;
+    border: 3px solid black;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#container header{
+    height:40px;
+    background-color:black;
+      color: white;
+      font:30px;
+      text-align:center;
+}
+
+
+footer{
+    font:10px;
+}

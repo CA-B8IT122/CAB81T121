@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Q2_2018.Models.BuildingCodes>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <title>ShowCodes</title>
+</head>
+<div id="container">
+    <body>
+        <header>
+            <h4>Staff Intranet</h4>
+        </header>
+        <div>
+            <h2>College DBS Building Codes</h2>
+            <div class="center">
+                @foreach (var code in Model)
+                {
+                    <h3> @code.BuildingHouse</h3>
+                    <h3>Code: @code.BuildingCode</h3>
+                    <hr />
+                }
+            </div>
+
+        </div>
+        <footer>
+            &copy; 2018 Dublin Business School
+        </footer>
+        @Html.ActionLink("Add another code", "Index", "Home");
+    </body>
+</div>
+</html>

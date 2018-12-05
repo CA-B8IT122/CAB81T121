@@ -1,0 +1,4 @@
+﻿CREATE PROC usp_ShowALL
+AS
+SELECT * FROM Members
+

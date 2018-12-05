@@ -1,0 +1,41 @@
+﻿@model Q2_2018.Models.BuildingCodes
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>College XYZ Building Codes</h2>
+    <div>
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+        <p>
+            @Html.LabelFor(b => b.BuildingID)
+            @Html.TextBoxFor(b => b.BuildingID)
+        </p>
+        <p>
+            @Html.LabelFor(b => b.BuildingHouse)
+            @Html.TextBoxFor(b => b.BuildingHouse)
+        </p>
+        <p>
+            @Html.LabelFor(b => b.BuildingCode)
+            @Html.TextBoxFor(b => b.BuildingCode)
+        </p>
+
+        <input id = "submit" type="submit" value="Submit Code" />
+        <input id="reset" type="reset" value="Reset Form" />
+
+        @Html.ActionLink("Back to Home", "Index", "Home")
+        }
+
+
+    </div>
+</body>
+</html>
