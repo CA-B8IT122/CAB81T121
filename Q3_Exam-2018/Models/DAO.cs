@@ -18,6 +18,7 @@ namespace Q3_Exam_2018.Models
             con = new SqlConnection(WebConfigurationManager.ConnectionStrings["constring"].ConnectionString);
         }
 
+
         public int InsertMember(Member member)
         {
             int count = 0;
@@ -37,7 +38,7 @@ namespace Q3_Exam_2018.Models
             }
             catch (SystemException ex)
             {
-                message = ex.Message;
+                message = "DAO" +ex.Message;
             }
             finally
             {

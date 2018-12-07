@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CA_B8IT121.Models.Customer>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show All Customers</title>
+</head>
+<body>
+    <div>
+        <h2>Show All Customers</h2>
+
+        @ViewBag.error
+        <h2>The members are: @ViewBag.message</h2>
+        <div>
+            @foreach (var cust in Model)
+            {
+                <h4> Name: @cust.Name </h4>
+                <h4> Address: @cust.StreetAddress</h4>
+                <h4>City: @cust.City</h4>
+                <h4>Email: @cust.Email</h4>
+                <h4>Phone: @cust.Phone</h4>
+            }
+
+
+        </div>
+
+    </div>
+</body>
+</html>

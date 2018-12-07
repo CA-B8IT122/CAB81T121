@@ -13,5 +13,12 @@ namespace CA_B8IT121.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddUser()
+        {
+            return View();
+
+        }
     }
 }
