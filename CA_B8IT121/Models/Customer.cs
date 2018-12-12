@@ -37,5 +37,8 @@ namespace CA_B8IT121.Models
         [Required]
         [Display(Name ="Would you like to be on our mailing list?")]
         public string MailList { get; set; }
+        [Required]
+        [Display(Name = "User Type")]
+        public UserEnum UserType { get; set; }
     }
 }

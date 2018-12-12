@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/Content/custstyle.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Welcome to the Administration page</title>
+</head>
+<body>
+    <div class="container">
+
+        <h2 class="staff">Administration</h2>
+
+        <h4>Please click on the puttons to select the search you require</h4>
+
+        <div class="flex-container">
+
+            <span class="spacing"><button class="btn" onclick="location.href='@Url.Action("ShoWAll", "Customer")'">Show All Customers</button></span>
+            <span class="spacing"><button class="btn" onclick="location.href='@Url.Action("ShowAll", "Wine")'">Show All Wines</button> </span>
+            <span class="spacing"><button class="btn" onclick="location.href='@Url.Action("ShowAll", "Order")'">Show All Orders</button></span>
+        </div>
+
+    </div>
+</body>
+</html>

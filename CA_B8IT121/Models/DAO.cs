@@ -39,6 +39,7 @@ namespace CA_B8IT121.Models
             cmd.Parameters.AddWithValue("@Phone", cust.Phone);
             cmd.Parameters.AddWithValue("@Gender", cust.Gender);
             cmd.Parameters.AddWithValue("@MailList", cust.MailList);
+           cmd.Parameters.AddWithValue("@CustType", cust.UserType);
 
             try
             {
@@ -61,12 +62,11 @@ namespace CA_B8IT121.Models
         public string VerifyLogin(Customer cust)
 
         {
-            string password = null;
+            string password, name = null;
             SqlDataReader reader;
-            SqlCommand cmd = new SqlCommand("uspVerifyLogin", con)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
+            SqlCommand cmd = new SqlCommand("usp_VerifyLogin", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            
             cmd.Parameters.AddWithValue("@Email", cust.Email);
             try
             {
@@ -77,7 +77,7 @@ namespace CA_B8IT121.Models
                     password = reader["Password"].ToString();
                     if (Crypto.VerifyHashedPassword(password, cust.Password))
                     {
-                        this.message = "Welcome" + reader["Name"].ToString();
+                        name =  reader["Name"].ToString();
                     }
                     else
                     {
@@ -98,7 +98,7 @@ namespace CA_B8IT121.Models
                 con.Close();
             }
 
-            return this.message;
+            return name;
         }
 
         public List<Customer> ShowAll()
@@ -114,6 +114,7 @@ namespace CA_B8IT121.Models
             {
 
                 con.Open();
+
                 reader = sql.ExecuteReader();
 
                 while (reader.Read())

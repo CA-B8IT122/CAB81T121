@@ -5,9 +5,9 @@ using System.Web;
 
 namespace CA_B8IT121.Models
 {
-    public enum MailEnum
+    public enum UserEnum
     {
-        yes,
-        no
+        Customer,
+        Administrator
     }
 }

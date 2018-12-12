@@ -1,0 +1,49 @@
+﻿h2 {
+    font: 200px;
+    font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-weight:lighter; 
+    text-align: center;
+}
+.staff{
+    padding:50px;
+}
+.heading{
+    padding-top: 10px;
+    padding-bottom:10px;
+}
+.container{
+    width:70%;
+    justify-content: center;
+    border:solid thin black;
+    padding: 10px;
+}
+.flex-container {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    margin: auto;
+    align-items:center;
+    text-align:center;
+}
+
+.spacing {
+    height: 50px;
+    align-items:center;
+    padding:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.lhs {
+    width: 45%;
+    float:left;
+    padding-left:10px;
+}
+
+.rhs{
+    float: right;
+    width: 45%;
+}
+.btn{
+background-color:aliceblue;
+}
+

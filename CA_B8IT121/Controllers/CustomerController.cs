@@ -24,6 +24,7 @@ namespace CA_B8IT121.Controllers
         [HttpPost]
         public ActionResult AddCustomer(Customer cust)
         {
+            
             int counter = 0;
 
             counter = dao.InsertCustomer(cust);
@@ -34,7 +35,7 @@ namespace CA_B8IT121.Controllers
             }
             else
             {
-                Response.Write("Error in home controller " + dao);
+                Response.Write("Error in customer controller " + dao);
             }
             return View();
         }
@@ -42,31 +43,55 @@ namespace CA_B8IT121.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(Customer cust)
         {
+            Response.Write("starting Check");
 
             ModelState.Remove("Name");
             ModelState.Remove("StreetAddress");
+            ModelState.Remove("City");
             ModelState.Remove("ConfirmPassword");
-            if (ModelState.IsValid)
+            ModelState.Remove("Gender");
+            ModelState.Remove("MailList");
             {
-                cust.Name = dao.VerifyLogin(cust);
-                if (cust.Name != null)
-                {
-                    //Session.Add("name", user.FirstName);
-                    Session["name"] = cust.Name;
-                    Session["email"] = cust.Email;
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ViewBag.Status = "Error " + dao.message;
 
-                    return View("Status");
-                }
+                if (cust.UserType == UserEnum.Administrator )
+                {
+                    cust.Name = dao.VerifyLogin(cust);
+                    if (cust.Name != null)
+                    {
+                        Session["Name"] = cust.Name;
+                        Session["Email"] = cust.Email;
 
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        ViewBag.Status = "Error " + dao.message;
+                    }
+                        return RedirectToAction("View", "Customer");
+                }
+                else if (cust.UserType == UserEnum.Customer)
+                {
+                    cust.Name = dao.VerifyLogin(cust);
+                    if (cust.Name != null)
+                    {
+                        Session["Name"] = cust.Name;
+                        Session["Email"] = cust.Email;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Status = "Error " + dao.message;
+
+                        return View("");
+                    }
+
+                }
             }
+
             return View(cust);
         }
         public ActionResult ShowAll()
