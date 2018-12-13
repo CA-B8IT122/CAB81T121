@@ -1,0 +1,47 @@
+﻿@model GrapeWine.Models.Customer
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customer Login</title>
+</head>
+<body>
+<h2>Welcome to our customer login</h2>
+<div> 
+    <div class="lhs">
+        <h3>Registered Customers</h3>
+        <h4>If you have an account with us already, please log in</h4>
+        @using (Html.BeginForm("LoginForm", "Customer", FormMethod.Post))
+        {
+            <p>
+                @Html.LabelFor(c => c.Email)
+                @Html.TextBoxFor(c => c.Email)
+                @Html.ValidationMessageFor(c => c.Email, "", new { @class = "error" })
+            </p>
+            <p>
+                @Html.LabelFor(c => c.Password)
+                @Html.TextBoxFor(c => c.Password)
+                @Html.ValidationMessageFor(c => c.Email, "", new { @class = "error" })
+            </p>
+        }
+        <input type="submit" value="Login" />
+
+
+    </div>
+    <div class="rhs">
+
+        <h3>New Customer Registration</h3>
+        <p>
+            All new customers, please register here.
+            <button onclick="location.href='@Url.Action("AddCustomer", "Customer")'">Add a New Customer</button>
+        </p>
+
+    </div>
+</div>
+</body>
+</html>
