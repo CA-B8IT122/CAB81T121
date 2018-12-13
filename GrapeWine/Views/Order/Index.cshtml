@@ -1,0 +1,52 @@
+﻿@model GrapeWine.Models.Order
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add a Book</title>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm("AddOrder", "Order", FormMethod.Post))
+    {
+        <p>
+            @Html.LabelFor(o => o.ProductID)
+            @Html.TextBoxFor(o => o.ProductID)
+        </p>
+        <p>
+            @Html.LabelFor(o => o.CustomerID)
+            @Html.TextBoxFor(o => o.CustomerID)
+        </p>
+        <p>
+            @Html.LabelFor(o => o.ProductType)
+            @Html.TextBoxFor(o => o.ProductType)
+        </p>
+        <p>
+            @Html.LabelFor(o => o.ProductName)
+            @Html.TextBoxFor(o => o.ProductName)
+        </p>
+        <p>
+            @Html.LabelFor(o => o.Country)
+            @Html.TextBoxFor(o => o.Country)
+        </p>
+        <p>
+            @Html.LabelFor(o => o.Price)
+            @Html.TextBoxFor(o => o.Price)
+        </p>
+        <p>
+            @Html.LabelFor(o => o.Quantity)
+            @Html.TextBoxFor(o => o.Quantity)
+        </p>
+        <p>
+            <input type="submit" value="Make an order" />
+        </p>
+    }
+</div>
+</body>
+</html>

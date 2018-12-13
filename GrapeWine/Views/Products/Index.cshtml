@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Wines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Wines</h1>
+        <hr />
+    </div>
+
+    <div class="col-md-12" style="padding-bottom:10px;">
+        @using (Ajax.BeginForm("GetProducts", "Products", new AjaxOptions()
+        {
+            Url = "/Products/GetProducts",
+            AllowCache = true,
+            HttpMethod = "POST",
+            OnSuccess = "loadProducts",
+            OnBegin = "onBegin"
+        }, new { id = "myForm", @class = "form-inline" }))
+        {
+            <div class="form-group col-md-2">
+                <small for="ProductCountry" class="control-label">Filter by ProductCountry:</small>
+                @Html.DropDownList("ProductCountry", (SelectList)ViewBag.Country, null, new { @onchange = "$('#myForm').submit();" })
+            </div>
+
+            <div class="form-group col-md-2">
+                <small for="Grape" class="control-label">Filter by Grape:</small>
+                @Html.DropDownList("Grape", (SelectList)ViewBag.Grape, null, new { @onchange = "$('#myForm').submit();" })
+            </div>
+        }
+    </div>
+
+</div>
+<div class="col" id="products">
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#myForm").submit();
+        });
+
+        function onBegin() {
+            $("#products").html('<h1 class="text-center">Loading...</h1>');
+        }
+
+        function loadProducts(products) {
+            var cnt = 1;
+            var html = "";
+            $('#products').html('');
+            for (var product of products) {
+                html += `<div class="card flex-fill col-8 col-md-4 col-lg-3 d-flex" style="margin:10px;">
+                                        <div class="overlay-container">
+                                            <a href="/Products/Info/${product.ProductID}"><img class="card-img-top image" style="padding:5px;" src="${product.ImageSrc}" alt="${product.ProductName}"></a>
+                                            <div class="middle">
+                                                <div class="text">Try this out</div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <label class="card-title text-info">${product.ProductName}</label>
+                                            <p class="card-text">
+                                                    <div class="text-truncate">${product.ProductType}</div><br/>
+                                                    <small><b>&euro; ${product.Price}</b></small>
+                                            </p>
+                                            <div class="row">
+                                                <div class="col-md-6 pull-left">
+                                                    <a href="/Products/Info/${product.ProductID}" class="btn btn-info">Buy now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                if (cnt % 4 == 0) {
+                    html = `<div class="row">${html}</div>`;
+                    $('#products').append(html);
+                    html = '';
+                }
+                cnt++;
+            }
+
+            if (html) {
+                html = `<div class="row">${html}</div>`;
+                $('#products').append(html);
+                html = '';
+            }
+
+        }
+    </script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
