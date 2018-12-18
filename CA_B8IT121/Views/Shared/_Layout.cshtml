@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="container col-lg-12">
+
+
+
+    <div id="wrapper">
+        <header>
+
+            <img id="Wines1" src="~/Content/Images/Wine.jpg" />
+            <img alt="logo" class="centre" />
+            <div id="Heading">
+                <P>Muscat Wines</P>
+            </div>
+        </header>
+
+
+
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+
+                @Html.ActionLink("Wine", "Index", "Wine")
+
+
+                <li>@Html.ActionLink("About Us", "Index", "About")</li>
+                <li>@Html.ActionLink("Contact Us", "Index", "Contact")</li>
+                <li>@Html.ActionLink("Member Login", "Index", "Member")</li>
+                <li>@Html.ActionLink("Sign Up Now!", "Index", "SignUp")</li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row">
+        <main>
+            @RenderBody()
+
+            <img id="champ" src="~/Content/Images/champagne toast.jpg" />
+
+        </main>
+    </div>
+    <div class="row">
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Muscat Wines.</p>
+        </footer>
+    </div>
+    </div>
+
+</body>
+</html>

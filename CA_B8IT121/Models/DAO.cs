@@ -138,6 +138,39 @@ namespace CA_B8IT121.Models
 
         }
 
+        public int InsertOrder(Order order)
+        {
+            int count = 0;
+            SqlCommand cmd = new SqlCommand("uspInsert_tbl_order", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@order", order.ProductID);
+            cmd.Parameters.AddWithValue("@customer", order.CustomerID);
+            cmd.Parameters.AddWithValue("@type", order.ProductType);
+            cmd.Parameters.AddWithValue("@name", order.ProductName);
+            cmd.Parameters.AddWithValue("@county", order.Country);
+            cmd.Parameters.AddWithValue("@grape", order.Grape);
+            cmd.Parameters.AddWithValue("@price", order.Price);
+            cmd.Parameters.AddWithValue("@quantity", order.Quantity);
+            try
+            {
+                con.Open();
+                count = cmd.ExecuteNonQuery();
+            }
+            catch (SystemException ex)
+            {
+                message = ex.Message;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return count;
+
+
+        }
+
     }
-    
+
 }

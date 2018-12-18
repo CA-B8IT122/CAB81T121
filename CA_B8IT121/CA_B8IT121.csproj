@@ -88,14 +88,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custstyle.css" />
+    <Content Include="Content\font\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\allegrini.jpg" />
+    <Content Include="Content\Images\alpha.jpg" />
+    <Content Include="Content\Images\babington.jpg" />
+    <Content Include="Content\Images\Balnaves.jpg" />
+    <Content Include="Content\Images\banfi.jpg" />
+    <Content Include="Content\Images\baron.jpg" />
+    <Content Include="Content\Images\casa.jpg" />
+    <Content Include="Content\Images\champagne toast.jpg" />
+    <Content Include="Content\Images\dress.jpg" />
+    <Content Include="Content\Images\galanti.jpg" />
+    <Content Include="Content\Images\gourmet-wines-and-irish-red.jpg" />
+    <Content Include="Content\Images\Grapes.jpg" />
+    <Content Include="Content\Images\innocent.jpg" />
+    <Content Include="Content\Images\laurent.jpg" />
+    <Content Include="Content\Images\logo.gif" />
+    <Content Include="Content\Images\prosecco.jpg" />
+    <Content Include="Content\Images\ramon.jpg" />
+    <Content Include="Content\Images\red bottle.jpg" />
+    <Content Include="Content\Images\Riondo.jpg" />
+    <Content Include="Content\Images\rose.jpg" />
+    <Content Include="Content\Images\san zeno.jpg" />
+    <Content Include="Content\Images\Som2.jpg" />
+    <Content Include="Content\Images\sommelier.jpg" />
+    <Content Include="Content\Images\Supermarket-630x417.jpg" />
+    <Content Include="Content\Images\veltiner.jpg" />
+    <Content Include="Content\Images\Verde-Valley-Vineyard-Tasting-Tour-image-1.jpg" />
+    <Content Include="Content\Images\whitebottle.jpg" />
+    <Content Include="Content\Images\Wine and bottle.jpg" />
+    <Content Include="Content\Images\Wine.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\font\glyphicons-halflings-regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -105,13 +149,19 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DAO.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\UserEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -129,6 +179,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Contact\View.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,6 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
