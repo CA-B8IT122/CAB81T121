@@ -14,8 +14,9 @@
     <div>
         <h2>Show All Customers</h2>
 
+
         @ViewBag.error
-        <h2>The members are: @ViewBag.message</h2>
+        <h3>We have @ViewBag.message customer(s) as follows:</h3>
         <div>
             @foreach (var cust in Model)
             {
@@ -24,7 +25,7 @@
                 <h4>City: @cust.City</h4>
                 <h4>Email: @cust.Email</h4>
                 <h4>Phone: @cust.Phone</h4>
-                <h4>User Type: @cust.UserType</h4>
+              <hr />
             }
 
 

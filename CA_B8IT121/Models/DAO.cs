@@ -35,11 +35,11 @@ namespace CA_B8IT121.Models
             cmd.Parameters.AddWithValue("@StreetAddress", cust.StreetAddress);
             cmd.Parameters.AddWithValue("@City", cust.City);
             password = Crypto.HashPassword(cust.Password);
-            cmd.Parameters.AddWithValue("@Password", cust.Password);
+            cmd.Parameters.AddWithValue("@Password", password);
             cmd.Parameters.AddWithValue("@Phone", cust.Phone);
             cmd.Parameters.AddWithValue("@Gender", cust.Gender);
             cmd.Parameters.AddWithValue("@MailList", cust.MailList);
-           cmd.Parameters.AddWithValue("@CustType", cust.UserType);
+           cmd.Parameters.AddWithValue("@CustType", cust.CustType);
 
             try
             {
@@ -59,47 +59,41 @@ namespace CA_B8IT121.Models
             return count;
         }
 
-        public string VerifyLogin(Customer cust)
+        public Customer VerifyLogin(string email)
+        { 
+            Customer cust = null;
+           
+        SqlDataReader reader;
+       
+        SqlCommand cmd = new SqlCommand("usp_VerifyLogin", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Email", email);
 
-        {
-            string password, name = null;
-            SqlDataReader reader;
-            SqlCommand cmd = new SqlCommand("usp_VerifyLogin", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            
-            cmd.Parameters.AddWithValue("@Email", cust.Email);
             try
             {
                 con.Open();
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    password = reader["Password"].ToString();
-                    if (Crypto.VerifyHashedPassword(password, cust.Password))
-                    {
-                        name =  reader["Name"].ToString();
-                    }
-                    else
-                    {
-                        this.message = "Incorrect password entered";
-                    }
+                    cust = new Customer();
+                    cust.Name = reader["Name"].ToString();
+                    cust.CustType = reader["CustType"].ToString();
+
                 }
             }
-            catch (SqlException ex)
-            {
-                this.message = ex.Message;
-            }
-            catch (FormatException ex1)
-            {
-                this.message = ex1.Message;
+            catch(Exception ex){
+                message = ex.Message;
             }
             finally
             {
                 con.Close();
             }
 
-            return name;
+            return cust;
+
         }
+
+        
 
         public List<Customer> ShowAll()
         {
@@ -117,19 +111,16 @@ namespace CA_B8IT121.Models
 
                 reader = sql.ExecuteReader();
 
-                while (reader.Read())
+                while (reader.Read() && reader[8].ToString()!= "Administrator")
                 {
                     Customer cust = new Customer();
-
-
+                    
                     cust.Email = reader[0].ToString();
                     cust.Name = reader[1].ToString();
                     cust.StreetAddress = reader[2].ToString();
                     cust.City = reader[3].ToString();
-                    cust.Phone = reader[4].ToString();
-                    cust.Password = reader[5].ToString();
-
-
+                    cust.Phone = reader[5].ToString();
+                   
                     cust_list.Add(cust);
                 }
             }
