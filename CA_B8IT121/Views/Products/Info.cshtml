@@ -1,0 +1,81 @@
+﻿@model CA_B8IT121.Models.Product
+
+@{
+    ViewBag.Title = Model.ProductName + " | Grape Wine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>@Model.ProductName</h1>
+        <hr />
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="@Model.ImageSrc" data-zoom-image="@Model.ImageSrc.Replace(" Images","Images/Large")" alt="@Model.ProductName" id="product_image" style="width:90%;" />
+            </div>
+            <div class="col-md-7">
+                @using (Ajax.BeginForm("AddToCart", "Products", new AjaxOptions()
+                {
+                    Url = "/Products/AddToCart",
+                    AllowCache = true,
+                    HttpMethod = "POST",
+                    OnSuccess = "GetCart",
+                    OnComplete = "AddedToCart"
+                }, new { @style = "border:solid 1px #ddd; border-radius:5px; padding:5px;" }))
+                {
+                    <div class="col-xs-12 col-md-12">
+                        <label> @Model.ProductType</label>
+                        <h3>&euro; @Model.Price EUR</h3>
+                        <hr />
+                    </div>
+
+                    <input type="hidden" name="productId" value="@Model.ProductID" />
+
+                    <div class="form-group col-xs-6 col-md-6">
+                        <label for="type" class="control-label">Type</label>
+                        <select name="type" class="form-control">
+                            <option value="6">6 Btl. Case</option>
+                            <option value="12">12 Btl. Case</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-xs-4 col-md-4">
+                        <label for="qty" class="control-label">Qty</label>
+                        <input type="number" name="qty" class="form-control" value="1" min="1" />
+                    </div>
+
+                    <div class="form-group col-xs-6 col-md-6">
+                        <input type="submit" class="btn btn-default" value="Add to cart" />
+                    </div>
+                }
+                <div class="row">
+                    &nbsp;
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <b>Product Type: </b>&nbsp;<label> @Model.ProductType</label>
+                    </div>
+                    <div class="row">
+                        <b>Product County: </b>&nbsp;<label>@Model.ProductCountry</label>
+                    </div>
+                    <div class="row">
+                        <b>Description: </b>&nbsp;<p>@Model.ProductDescription</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/jquery.elevateZoom-3.0.8.min.js"></script>
+    <script>
+        function AddedToCart() {
+            alert('Item has been added to cart...');
+        }
+    </script>
+}
+

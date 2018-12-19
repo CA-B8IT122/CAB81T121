@@ -1,6 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -46,21 +48,3 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        <h2>Welcome to our web App</h2>
-        @Html.ActionLink("Login Page", "Login", "Customer")
-    </div>
-</body>
-</html>

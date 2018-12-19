@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CA_B8IT121.Models.Product>
+{
+    ViewBag.Title = "ShowAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show All Products</title>
+</head>
+<body>
+    <div>
+        <h2>Show All Products</h2>
+
+        @ViewBag.error
+        <h2>The products are: @ViewBag.message</h2>
+        <div>
+            @foreach (var products in Model)
+            {
+                <h4> Name: @products.ProductName </h4>
+                <h4> Country: @products.ProductCountry</h4>
+                <h4>Type: @products.ProductType</h4>
+                <h4>Grape: @products.Grape</h4>
+                <h4>Price: @products.Price</h4>
+            }
+
+
+        </div>
+
+    </div>
+</body>
+</html>
+

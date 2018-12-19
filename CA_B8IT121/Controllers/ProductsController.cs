@@ -123,7 +123,7 @@ namespace CA_B8IT121.Controllers
 
         public ProductDataHelper()
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["GrapeWineConnection"].ConnectionString;
+            _connectionString = ConfigurationManager.ConnectionStrings["conString"].ConnectionString;
         }
 
         public List<Product> GetProducts(FilterCriteria model)
